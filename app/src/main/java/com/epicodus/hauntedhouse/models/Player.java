@@ -5,6 +5,8 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Select;
 
+import java.util.List;
+
 @Table(name = "Players", id = "_id")
 public class Player extends Model {
 
@@ -22,6 +24,10 @@ public class Player extends Model {
 
     public String getName() {
         return mName;
+    }
+
+    public List<Item> getItems() {
+        return new Select().from(Item.class).where("Carrier = ?", this).execute();
     }
 
     public static Player find(String name) {

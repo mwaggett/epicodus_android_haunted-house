@@ -10,8 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 import com.epicodus.hauntedhouse.R;
+import com.epicodus.hauntedhouse.models.Item;
 
 public class NewGameActivity extends AppCompatActivity {
 
@@ -39,6 +41,27 @@ public class NewGameActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        String item = "";
+
+        switch (view.getId()) {
+            case R.id.flashlightRadio:
+                if (checked) {
+                    item = "flashlight";
+                }
+                break;
+            case R.id.weaponRadio:
+                if (checked) {
+                    item = "weapon";
+                }
+                break;
+        }
+        SharedPreferences.Editor editor = mPreferences.edit();
+        editor.putString("start_item", item);
+        editor.commit();
     }
 
     @Override

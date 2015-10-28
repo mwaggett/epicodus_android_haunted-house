@@ -13,10 +13,10 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Who are you?"
-        android:id="@+id/registerLabel"
-        android:layout_above="@+id/nameText"
+        android:id="@+id/namePrompt"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="87dp"/>
+        android:layout_marginTop="50dp"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -24,9 +24,19 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/nameText"
-        android:layout_centerVertical="true"
+        android:hint="Name"
+        android:layout_below="@+id/namePrompt"
         android:layout_centerHorizontal="true"
-        android:hint="Name"/>
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="What are you bringing with you?"
+        android:id="@+id/itemPrompt"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -34,7 +44,34 @@
         android:layout_height="wrap_content"
         android:text="Enter the House"
         android:id="@+id/enterButton"
-        android:layout_below="@+id/nameText"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/itemPrompt"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"/>
+        android:layout_above="@+id/enterButton"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flashlight"
+            android:id="@+id/flashlightRadio"
+            android:checked="false"
+            android:onClick="onRadioButtonClicked"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weapon"
+            android:id="@+id/weaponRadio"
+            android:layout_gravity="right"
+            android:checked="false"
+            android:onClick="onRadioButtonClicked"/>
+
+    </RadioGroup>
+
 </RelativeLayout>

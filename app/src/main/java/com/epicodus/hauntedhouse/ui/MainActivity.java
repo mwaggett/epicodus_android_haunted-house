@@ -10,12 +10,14 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.epicodus.hauntedhouse.R;
+import com.epicodus.hauntedhouse.models.Item;
 import com.epicodus.hauntedhouse.models.Player;
 
 public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences mPreferences;
     private Player mPlayer;
+    private Item mStartItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
             return false;
         } else {
             setPlayer(playerName);
+            Toast.makeText(this, "Welcome, " + mPlayer.getName(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "You are carrying a " + mStartItem.getType(), Toast.LENGTH_LONG).show();
             return true;
         }
     }
@@ -45,11 +49,18 @@ public class MainActivity extends AppCompatActivity {
         Player player = Player.find(playerName);
         if (player != null) {
             mPlayer = player;
+            mStartItem = player.getItems().get(0);
         } else {
             mPlayer = new Player(playerName);
             mPlayer.save();
+            addStartItem();
         }
-        Toast.makeText(this, "Welcome, " + mPlayer.getName(), Toast.LENGTH_LONG).show();
+    }
+
+    private void addStartItem() {
+        String startItem = mPreferences.getString("start_item", "nothing");
+        mStartItem = new Item(startItem, mPlayer);
+        mStartItem.save();
     }
 
     @Override

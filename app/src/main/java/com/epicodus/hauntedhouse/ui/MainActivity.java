@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private Player mPlayer;
     private Item mStartItem;
     private TextView mInventoryText;
+    private Button mRoomButton;
+    private Button mHallwayButton;
+    private Button mStaircaseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,34 @@ public class MainActivity extends AppCompatActivity {
 
         mInventoryText = (TextView) findViewById(R.id.inventory);
         mInventoryText.setText("Inventory: " + inventoryString());
+
+        mRoomButton = (Button) findViewById(R.id.roomButton);
+        mHallwayButton = (Button) findViewById(R.id.hallwayButton);
+        mStaircaseButton = (Button) findViewById(R.id.staircaseButton);
+
+        mRoomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, BigRoomActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mHallwayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, HallwayActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mStaircaseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, StaircaseActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private boolean inProgress() {

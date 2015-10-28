@@ -7,4 +7,7 @@
     <string name="start_text">
         The sun is just starting to go down.\nYou approach the house and slowly climb the decaying steps to the front door.\nIt is unlocked.\nYou push open the creaky door.\nThere is a large room to your left, a staircase to the right, and a long hallway directly in front of you.\nWhere do you go?
     </string>
+    <string name="title_activity_big_room">Big Room</string>
+    <string name="title_activity_hallway">Hallway</string>
+    <string name="title_activity_staircase">Staircase</string>
 </resources>

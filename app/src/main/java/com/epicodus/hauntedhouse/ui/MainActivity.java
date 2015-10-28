@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         mInventoryText = (TextView) findViewById(R.id.inventory);
-        mInventoryText.setText("Inventory: " + inventoryString());
+        mInventoryText.setText("Inventory: " + mPlayer.inventoryString());
 
         mRoomButton = (Button) findViewById(R.id.roomButton);
         mHallwayButton = (Button) findViewById(R.id.hallwayButton);
@@ -98,16 +98,5 @@ public class MainActivity extends AppCompatActivity {
         String startItem = mPreferences.getString("start_item", "nothing");
         mStartItem = new Item(startItem, mPlayer);
         mStartItem.save();
-    }
-
-    private String inventoryString() {
-        String inventory = "";
-        for (int index = 0; index < mPlayer.getItems().size(); index++) {
-            inventory = inventory + mPlayer.getItems().get(index).getType();
-            if (index < mPlayer.getItems().size()-1) {
-                inventory = inventory + ", ";
-            }
-        }
-        return inventory;
     }
 }

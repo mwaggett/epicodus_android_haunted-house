@@ -1,39 +1,59 @@
 package com.epicodus.hauntedhouse.ui;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.hauntedhouse.R;
+import com.epicodus.hauntedhouse.models.Item;
+import com.epicodus.hauntedhouse.models.Player;
 
 public class BigRoomActivity extends AppCompatActivity {
+
+    private SharedPreferences mPreferences;
+    private Player mPlayer;
+    private TextView mInventoryText;
+    private TextView mRoomText;
+    private ImageView mRoomImage;
+    private Button mYesButton;
+    private Button mNoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_big_room);
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_big_room, menu);
-        return true;
-    }
+        mPreferences = getApplicationContext().getSharedPreferences("haunted_house", Context.MODE_PRIVATE);
+        mPlayer = Player.find(mPreferences.getString("player_name", null));
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        mInventoryText = (TextView) findViewById(R.id.inventory);
+        mInventoryText.setText("Inventory: " + mPlayer.inventoryString());
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        mRoomText = (TextView) findViewById(R.id.roomText);
+        mRoomImage = (ImageView) findViewById(R.id.roomImage);
+        mYesButton = (Button) findViewById(R.id.yesButton);
+        mNoButton = (Button) findViewById(R.id.noButton);
+
+        if (mPlayer.checkInventory("flashlight")) {
+            mRoomText.setText("It is dark. Do you turn on your flashlight?");
+            mYesButton.setVisibility(View.VISIBLE);
+            mNoButton.setVisibility(View.VISIBLE);
+
+            mYesButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    
+                }
+            });
         }
 
-        return super.onOptionsItemSelected(item);
     }
 }

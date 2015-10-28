@@ -10,13 +10,13 @@
                 android:background="@android:color/black">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start_text"
-        android:id="@+id/startText"
-        android:layout_centerHorizontal="true"
-        android:textColor="#3a6460"
-        />
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/start_text"
+    android:id="@+id/roomText"
+    android:layout_centerHorizontal="true"
+    android:textColor="#3a6460"
+    />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_above="@+id/hallwayButton"
         android:layout_centerHorizontal="true"
         android:src="@drawable/house_front"
-        android:layout_below="@+id/startText"
+        android:layout_below="@+id/roomText"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"/>
 

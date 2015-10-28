@@ -30,6 +30,26 @@ public class Player extends Model {
         return new Select().from(Item.class).where("Carrier = ?", this.getId()).execute();
     }
 
+    public String inventoryString() {
+        String inventory = "";
+        for (int index = 0; index < this.getItems().size(); index++) {
+            inventory = inventory + this.getItems().get(index).getType();
+            if (index < this.getItems().size()-1) {
+                inventory = inventory + ", ";
+            }
+        }
+        return inventory;
+    }
+
+    public boolean checkInventory(String itemType) {
+        for (Item item : this.getItems()) {
+            if (item.getType().equals(itemType)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static Player find(String name) {
         return new Select().from(Player.class).where("Name = ?", name).executeSingle();
     }

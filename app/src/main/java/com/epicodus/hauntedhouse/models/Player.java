@@ -27,7 +27,7 @@ public class Player extends Model {
     }
 
     public List<Item> getItems() {
-        return new Select().from(Item.class).where("Carrier = ?", this).execute();
+        return new Select().from(Item.class).where("Carrier = ?", this.getId()).execute();
     }
 
     public static Player find(String name) {

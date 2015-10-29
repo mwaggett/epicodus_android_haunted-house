@@ -50,10 +50,27 @@ public class BigRoomActivity extends AppCompatActivity {
             mYesButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    
+                    mRoomImage.setImageResource(R.drawable.big_room);
+                    mRoomText.setText("There is a dusty old couch, an antique piano, and sheet music scattering the floor.");
+                    mYesButton.setVisibility(View.INVISIBLE);
+                    mNoButton.setVisibility(View.INVISIBLE);
+                }
+            });
+            mNoButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mRoomText.setText("You cannot see.");
+                    mYesButton.setVisibility(View.INVISIBLE);
+                    mNoButton.setVisibility(View.INVISIBLE);
                 }
             });
         }
 
     }
+
+//    private void displayRoomChoice() {
+//        mRoomText.setText("something else");
+//        mYesButton.setVisibility(View.INVISIBLE);
+//        mNoButton.setVisibility(View.INVISIBLE);
+//    }
 }
